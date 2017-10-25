@@ -607,6 +607,8 @@ def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
         if 'TITLE' not in header:
             t.attrs['TITLE'] = name
 
+        t.attrs['TITLE'] = t.attrs['TITLE'].decode('utf8')
+
         # add column descriptions and units
         for e, colname in enumerate(data.dtype.names):
             _u = units.get(colname, None)
