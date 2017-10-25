@@ -596,7 +596,7 @@ def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
             append = False
 
     if not append:
-        t = hd5.createTable(where, name, data, **kwargs)
+        t = hd5.create_table(where, name, data)
 
         # update header
         for k, v in header.items():
