@@ -587,12 +587,12 @@ def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
 
     if append:
         try:
-            t = hd5.get_node(where + name)
+            t = hd5.get_node(where + '/' + name)
             t.append(data.astype(t.description._v_dtype))
             t.flush()
         except tables.NoSuchNodeError:
             if not silent:
-                print(("Warning: Table {0} does not exists.  \n A new table will be created").format(where + name))
+                print(("Warning: Table {0} does not exists.  \n A new table will be created").format(where + '/' + name))
             append = False
 
     if not append:
