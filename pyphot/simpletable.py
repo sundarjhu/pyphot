@@ -614,9 +614,9 @@ def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
             _u = units.get(colname, None)
             _d = comments.get(colname, None)
             if _u is not None:
-                t.attrs['FIELD_{0:d}_UNIT'] = _u
+                t.attrs['FIELD_{0:d}_UNIT'.format(e)] = _u
             if _d is not None:
-                t.attrs['FIELD_{0:d}_DESC'] = _d
+                t.attrs['FIELD_{0:d}_DESC'.format(e)] = _d
 
         # add aliases
         for i, (k, v) in enumerate(aliases.items()):
