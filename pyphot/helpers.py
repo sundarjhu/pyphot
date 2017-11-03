@@ -58,13 +58,20 @@ def extractPhotometry(lamb, spec, flist, absFlux=True, progress=True, Fnu=False)
     seds = np.empty( len(flist), dtype=float)
     for e, k in progress_enumerate(flist, show_progress=progress, desc='Photometry'):
         xl  = k.transmit > 0.
-        tmp = lamb[xl] * k.transmit[xl]
+        #Account for detector type and check if Fnu is set.
+        power = 0.
+        if 'photon' in k.dtype:
+            power = power + 1
+        if Fnu:
+            power = power - 2
+        tmp = lamb[xl]**power * k.transmit[xl]
         s0  = spec[:, xl]
         # apply absolute flux conversion if requested
         if absFlux:
             s0 /= distc
         a = trapz( tmp[None, :] * s0, lamb[xl], axis=1 )
-        seds[e] = a / k._lT   # divide by integral (lambda T dlambda)
+        b = trapz(tmp, lamb[xl])
+        seds[e] = a / b #Accounts for detector type and Fnu instead of Flambda
         cls.append(k.cl)
 
     return cls, seds
@@ -102,13 +109,20 @@ def extractSEDs(lamb, specs, flist, absFlux=True, progress=True, Fnu=False):
     cls = []
     for e, k in progress_enumerate(flist, show_progress=progress, desc='Photometry'):
         xl  = k.transmit > 0.
-        tmp = lamb[xl] * k.transmit[xl]
+        #Account for detector type and check if Fnu is set.
+        power = 0.
+        if 'photon' in k.dtype:
+            power = power + 1
+        if Fnu:
+            power = power - 2
+        tmp = lamb[xl]**power * k.transmit[xl]
         s0  = specs[:, xl]
         # apply absolute flux conversion if requested
         if absFlux:
             s0 /= distc
         a = trapz( tmp[None, :] * s0, lamb[xl], axis=1 )
-        seds[:, e] = a / k._lT
+        b = trapz(tmp, lamb[xl])
+        seds[:, e] = a / b #Accounts for detector type and Fnu instead of Flambda
         cls.append(k.cl)
 
     return cls, seds
