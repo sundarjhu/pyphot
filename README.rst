@@ -28,7 +28,7 @@ Install with `pip`
 
 .. code::
 
-  pip install git+git://github.com/sundarjhu/pyphot (to install this forked version)
+  pip install git+git://github.com/sundarjhu/pyphot@my-feature-branch (to install this forked version)
 
 (`--user` if you want to install it in your user profile)
 
