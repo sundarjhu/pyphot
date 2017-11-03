@@ -26,7 +26,7 @@ def progress_enumerate(it, *args, **kwargs):
             yield a
 
 
-def extractPhotometry(lamb, spec, flist, absFlux=True, progress=True):
+def extractPhotometry(lamb, spec, flist, absFlux=True, progress=True, Fnu=False):
     """Extract seds from a one single spectrum
 
     Parameters
@@ -70,7 +70,7 @@ def extractPhotometry(lamb, spec, flist, absFlux=True, progress=True):
     return cls, seds
 
 
-def extractSEDs(lamb, specs, flist, absFlux=True, progress=True):
+def extractSEDs(lamb, specs, flist, absFlux=True, progress=True, Fnu=False):
     """ Extract seds from a grid
 
     Parameters
