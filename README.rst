@@ -49,6 +49,11 @@ Some scripts in the package require you to have numpy and PyTables installed. Th
 Finally, download the following file and copy it into the pyphot/demo folder:
 https://ndownloader.figshare.com/files/9684328
 
+To find the location to the pyphot folder:
+
+.. code::
+   pip show pyphot
+
 Contributors
 ------------
 
