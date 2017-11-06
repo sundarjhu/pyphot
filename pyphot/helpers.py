@@ -65,11 +65,11 @@ def extractPhotometry(lamb, spec, flist, absFlux=True, progress=True, Fnu=False)
         if Fnu:
             power = power - 2
         tmp = lamb[xl]**power * k.transmit[xl]
-        s0  = spec[:, xl]
+        s0  = spec[xl]
         # apply absolute flux conversion if requested
         if absFlux:
             s0 /= distc
-        a = trapz( tmp[None, :] * s0, lamb[xl], axis=1 )
+        a = trapz(tmp * s0, lamb[xl], axis=1 )
         b = trapz(tmp, lamb[xl])
         seds[e] = a / b #Accounts for detector type and Fnu instead of Flambda
         cls.append(k.cl)
