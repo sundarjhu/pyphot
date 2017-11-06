@@ -50,6 +50,7 @@ Finally, download the following files and copy them into a folder named demo:
 https://ndownloader.figshare.com/files/9684328 (GRAMS C-rich grid, large file)
 https://ndownloader.figshare.com/files/9686362 (ISO spectrum of IRC+10216)
 https://ndownloader.figshare.com/files/9686377 (jupyter notebook to run demo)
+https://ndownloader.figshare.com/files/9686389 (alternatively, run this script line-by-line for demo)
 
 Contributors
 ------------
