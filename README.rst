@@ -40,7 +40,11 @@ download the repository and run the setup
 
   python setup.py install
 
+Some scripts in the package require you to have numpy and PyTables installed. This can also be done using `pip`, for example:
 
+.. code::
+
+  pip install tables
 
 Contributors
 ------------
