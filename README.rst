@@ -52,6 +52,7 @@ https://ndownloader.figshare.com/files/9684328
 To find the location to the pyphot folder:
 
 .. code::
+
    pip show pyphot
 
 Contributors
