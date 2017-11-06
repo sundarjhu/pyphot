@@ -46,15 +46,10 @@ Some scripts in the package require you to have numpy and PyTables installed. Th
 
   pip install tables
 
-Finally, download the following files and copy them into the folder named demo inside the pyphot folder:
-https://ndownloader.figshare.com/files/9684328
-https://ndownloader.figshare.com/files/9686362
-
-To find the location to the pyphot folder:
-
-.. code::
-
-   pip show pyphot
+Finally, download the following files and copy them into a folder named demo:
+https://ndownloader.figshare.com/files/9684328 (GRAMS C-rich grid, large file)
+https://ndownloader.figshare.com/files/9686362 (ISO spectrum of IRC+10216)
+https://ndownloader.figshare.com/files/9686377 (jupyter notebook to run demo)
 
 Contributors
 ------------
