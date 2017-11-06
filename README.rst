@@ -46,6 +46,9 @@ Some scripts in the package require you to have numpy and PyTables installed. Th
 
   pip install tables
 
+Finally, download the following file and copy it into the pyphot/demo folder:
+https://ndownloader.figshare.com/files/9684328
+
 Contributors
 ------------
 
