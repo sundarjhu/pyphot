@@ -24,11 +24,11 @@ computations.
 Installation
 ------------
 
-Install with `pip`
+Install this forked version with `pip`
 
 .. code::
 
-  pip install git+git://github.com/sundarjhu/pyphot@my-feature-branch (to install this forked version)
+  pip install git+git://github.com/sundarjhu/pyphot@my-feature-branch
 
 (`--user` if you want to install it in your user profile)
 
