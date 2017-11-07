@@ -11,7 +11,15 @@ def package_files(directory):
             paths.append(os.path.join('..', path, filename))
         return paths
 
-extra_files = package_files('pyphot/demo')
+def get_file_list(directory):
+    paths = []
+    for (path, directories, filenames) in os.walk('python/'+directory):
+        for filename in filenames:
+            paths.append(os.path.join('..', path, filename))
+    data_files = []
+    for file in extra_files:
+        data_files.append((directory, [file])
+    return data_files
 
 setup(name = "pyphot",
     version = 0.1,
@@ -23,10 +31,7 @@ setup(name = "pyphot",
     packages = find_packages(),
     package_data = {'pyphot':['libs/*'], 
                     'pyphot.ezunits':['default_en.txt']},
-    data_files = []
-    for file in extra_files:
-      data_files.append(('demo', [file])
-
+    data_files = get_file_list('demo'),
     include_package_data = True,
     classifiers=[
       'Development Status :: 3 - Alpha',
