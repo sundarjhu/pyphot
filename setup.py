@@ -7,7 +7,7 @@ def readme():
 
 def get_file_list(directory):
     paths = []
-    for (path, directories, filenames) in os.walk('python/'+directory):
+    for (path, directories, filenames) in os.walk('pyphot/'+directory):
         for filename in filenames:
             paths.append(os.path.join('..', path, filename))
     data_files = []
