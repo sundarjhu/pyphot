@@ -1,0 +1,2 @@
+include README.rst LICENSE
+include demo/demo_pyphot.py
