@@ -26,7 +26,7 @@ setup(name = "pyphot",
     package_data = {'pyphot':['libs/*'], 
                     'pyphot.ezunits':['default_en.txt']},
     data_files = get_file_list('demo'),
-    data_files = [('demo/', 'pyphot/demo/demo_pyphot.ipynb')],
+    data_files = [('demo/', ['pyphot/demo/demo_pyphot.ipynb'])],
     include_package_data = True,
     classifiers=[
       'Development Status :: 3 - Alpha',
