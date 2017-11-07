@@ -4,13 +4,6 @@ def readme():
     with open('README.rst') as f:
         return f.read()
 
-def package_files(directory):
-    paths = []
-    for (path, directories, filenames) in os.walk(directory):
-        for filename in filenames:
-            paths.append(os.path.join('..', path, filename))
-        return paths
-
 def get_file_list(directory):
     paths = []
     for (path, directories, filenames) in os.walk('python/'+directory):
@@ -18,7 +11,7 @@ def get_file_list(directory):
             paths.append(os.path.join('..', path, filename))
     data_files = []
     for file in extra_files:
-        data_files.append((directory, [file])
+        data_files.append((directory, [file]))
     return data_files
 
 setup(name = "pyphot",
