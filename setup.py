@@ -13,7 +13,7 @@ setup(name = "pyphot",
     url = "https://github.com/mfouesneau/pyphot",
     packages = find_packages(),
     package_data = {'pyphot':['libs/*'], 
-                    'pyphot.ezunits':['default_en.txt']}
+                    'pyphot.ezunits':['default_en.txt']},
     include_package_data = True,
     classifiers=[
       'Development Status :: 3 - Alpha',
