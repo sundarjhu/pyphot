@@ -11,7 +11,7 @@ def get_file_list(directory):
         for filename in filenames:
             paths.append(os.path.join('..', path, filename))
     data_files = []
-    for file in extra_files:
+    for file in paths:
         data_files.append((directory, [file]))
     return data_files
 
