@@ -14,8 +14,8 @@ setup(name = "pyphot",
     packages = find_packages(),
     package_data = {'pyphot':['libs/*'], 
                     'pyphot.ezunits':['default_en.txt']},
+    data_files = [('demo', ['demo/IRC+10216_ISO_SWS.dat'])]
     include_package_data = True,
-    data_files=[('demo', ['demo/IRC+10216_ISO_SWS.dat'])],
     classifiers=[
       'Development Status :: 3 - Alpha',
       'Intended Audience :: Science/Research',
