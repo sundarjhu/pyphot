@@ -4,6 +4,15 @@ def readme():
     with open('README.rst') as f:
         return f.read()
 
+def package_files(directory):
+    paths = []
+    for (path, directories, filenames) in os.walk(directory):
+        for filename in filenames:
+            paths.append(os.path.join('..', path, filename))
+        return paths
+
+extra_files = package_files('pyphot/demo')
+
 setup(name = "pyphot",
     version = 0.1,
     description = "A tool for computing photometry from spectra",
@@ -14,9 +23,10 @@ setup(name = "pyphot",
     packages = find_packages(),
     package_data = {'pyphot':['libs/*'], 
                     'pyphot.ezunits':['default_en.txt']},
-    data_files = [],
-    files = glob.glob('pyphot/demo/*'),
-    data_files.append(('pyphot/demo/', files)),
+    data_files = []
+    for file in extra_files:
+      data_files.append(('demo', [file])
+
     include_package_data = True,
     classifiers=[
       'Development Status :: 3 - Alpha',
