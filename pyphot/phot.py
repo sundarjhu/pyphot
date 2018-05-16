@@ -25,6 +25,7 @@ from .vega import Vega
 from .config import libsdir
 
 import os
+import pdb
 
 # directories
 # __default__      = libsdir + '/filters.hd5'

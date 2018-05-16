@@ -9,7 +9,8 @@ demodir = '/Users/sundar/work/pyphot/pyphot/demo/' #Edit this depending on user
 
 """Load entire HDF5 library"""
 libraryName=pkgdir+'libs/synphot_PhIReSSTARTer.hd5'
-filterLibrary = pyphot.get_library(fname=libraryName)
+#filterLibrary = pyphot.get_library(fname=libraryName)
+filterLibrary = pyphot.HDF_Library(libraryName)
 
 """Names of the first ten filters available in the library"""
 filterNames = filterLibrary.get_library_content()
@@ -29,7 +30,8 @@ filterNames = ['MCPS_U', 'MCPS_B', 'MCPS_U', 'MCPS_I', '2MASS_J', '2MASS_H', '2M
                                   'SPITZER_IRAC_36', 'SPITZER_IRAC_45', 'SPITZER_IRAC_58', 'SPITZER_IRAC_80',
                                   'SPITZER_MIPS_24']
 libraryName = libsdir+'synphot_PhIReSSTARTer.hd5'
-filterLibrary = pyphot.get_library(fname=libraryName)
+#filterLibrary = pyphot.get_library(fname=libraryName)
+filterLibrary = pyphot.HDF_Library(libraryName)
 
 #Input spectrum
 spec = np.loadtxt(demodir+'IRC+10216_ISO_SWS.dat', comments='#', usecols=(0,1))
