@@ -65,7 +65,6 @@ try:
 except ImportError:
     _pd = None
 
-
 # ==============================================================================
 # Python 3 compatibility behavior
 # ==============================================================================
@@ -521,7 +520,7 @@ def _ascii_read_header(fname, comments='#', delimiter=None, commentedHeader=True
     return nlines, header, units, desc, alias, names
 
 
-def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
+def _hdf5_write_data(filename, data, tablename=None, mode='a', append=False,
                      header={}, units={}, comments={}, aliases={}, **kwargs):
     """ Write table into HDF format
 
@@ -607,7 +606,7 @@ def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
         if 'TITLE' not in header:
             t.attrs['TITLE'] = name
 
-        t.attrs['TITLE'] = t.attrs['TITLE'].decode('utf8')
+        t.attrs['TITLE'] = t.attrs['TITLE'].encode('utf8')
 
         # add column descriptions and units
         for e, colname in enumerate(data.dtype.names):

@@ -25,7 +25,6 @@ from .vega import Vega
 from .config import libsdir
 
 import os
-import pdb
 
 # directories
 # __default__      = libsdir + '/filters.hd5'
@@ -166,9 +165,10 @@ class Filter(object):
             leff = np.trapz(w * s.transmit * v.flux.magnitude, w, axis=-1)
             leff /= np.trapz(s.transmit * v.flux.magnitude, w, axis=-1)
         if self.wavelength_unit is not None:
-            sunit = unit[self.wavelength_unit]
+            #sunit = unit[self.wavelength_unit]
+            sunit = self.wavelength_unit
             factor = (v.wavelength[0].to(other=sunit)/v.wavelength[0].magnitude).magnitude
-            return leff * sunit
+            return leff * factor * unit[sunit]
         else:
             return leff
 

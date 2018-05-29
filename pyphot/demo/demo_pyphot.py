@@ -8,7 +8,8 @@ libsdir = '/usr/local/lib/python2.7/site-packages/pyphot/libs/' #Edit this depen
 demodir = '/Users/sundar/work/pyphot/pyphot/demo/' #Edit this depending on user
 
 """Load entire HDF5 library"""
-libraryName=pkgdir+'libs/synphot_PhIReSSTARTer.hd5'
+libsdir = '/Users/sundar/work/pyphot/pyphot/libs/'
+libraryName=libsdir+'synphot_PhIReSSTARTer.hd5'
 #filterLibrary = pyphot.get_library(fname=libraryName)
 filterLibrary = pyphot.HDF_Library(libraryName)
 
