@@ -91,6 +91,8 @@ class Filter(object):
 
     def set_dtype(self, dtype):
         _d = dtype.lower()
+        if hasattr(_d, "decode"):
+            _d = _d.decode("utf-8")
         if "phot" in _d:
             self.dtype = "photon"
         elif "ener" in _d:
