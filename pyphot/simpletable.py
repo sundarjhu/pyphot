@@ -65,7 +65,6 @@ try:
 except ImportError:
     _pd = None
 
-
 # ==============================================================================
 # Python 3 compatibility behavior
 # ==============================================================================
@@ -521,7 +520,7 @@ def _ascii_read_header(fname, comments='#', delimiter=None, commentedHeader=True
     return nlines, header, units, desc, alias, names
 
 
-def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
+def _hdf5_write_data(filename, data, tablename=None, mode='a', append=False,
                      header={}, units={}, comments={}, aliases={}, **kwargs):
     """ Write table into HDF format
 
@@ -587,16 +586,16 @@ def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
 
     if append:
         try:
-            t = hd5.get_node(where + name)
+            t = hd5.get_node(where + '/' + name)
             t.append(data.astype(t.description._v_dtype))
             t.flush()
         except tables.NoSuchNodeError:
             if not silent:
-                print(("Warning: Table {0} does not exists.  \n A new table will be created").format(where + name))
+                print(("Warning: Table {0} does not exists.  \n A new table will be created").format(where + '/' + name))
             append = False
 
     if not append:
-        t = hd5.createTable(where, name, data, **kwargs)
+        t = hd5.create_table(where, name, data)
 
         # update header
         for k, v in header.items():
@@ -607,14 +606,16 @@ def _hdf5_write_data(filename, data, tablename=None, mode='w', append=False,
         if 'TITLE' not in header:
             t.attrs['TITLE'] = name
 
+        t.attrs['TITLE'] = t.attrs['TITLE'].encode('utf8')
+
         # add column descriptions and units
         for e, colname in enumerate(data.dtype.names):
             _u = units.get(colname, None)
             _d = comments.get(colname, None)
             if _u is not None:
-                t.attrs['FIELD_{0:d}_UNIT'] = _u
+                t.attrs['FIELD_{0:d}_UNIT'.format(e)] = _u
             if _d is not None:
-                t.attrs['FIELD_{0:d}_DESC'] = _d
+                t.attrs['FIELD_{0:d}_DESC'.format(e)] = _d
 
         # add aliases
         for i, (k, v) in enumerate(aliases.items()):

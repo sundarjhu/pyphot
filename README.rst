@@ -24,11 +24,11 @@ computations.
 Installation
 ------------
 
-Install with `pip`
+Install this forked version with `pip`
 
 .. code::
 
-  pip install git+git://github.com/mfouesneau/pyphot
+  pip install git+git://github.com/sundarjhu/pyphot@my-feature-branch
 
 (`--user` if you want to install it in your user profile)
 
@@ -40,7 +40,17 @@ download the repository and run the setup
 
   python setup.py install
 
+Some scripts in the package require you to have numpy and PyTables installed. This can also be done using `pip`, for example:
 
+.. code::
+
+  pip install tables
+
+Finally, download the following files and copy them into a folder named demo:
+https://ndownloader.figshare.com/files/9684328 (GRAMS C-rich grid, large file)
+https://ndownloader.figshare.com/files/9686362 (ISO spectrum of IRC+10216)
+https://ndownloader.figshare.com/files/9686377 (jupyter notebook to run demo)
+https://ndownloader.figshare.com/files/9686389 (alternatively, run this script line-by-line for demo)
 
 Contributors
 ------------

@@ -91,8 +91,8 @@ class Filter(object):
 
     def set_dtype(self, dtype):
         _d = dtype.lower()
-        if hasattr(_d, "decode"):
-            _d = _d.decode("utf-8")
+        if hasattr(_d, 'decode'):
+            _d = _d.decode('utf-8')
         if "phot" in _d:
             self.dtype = "photon"
         elif "ener" in _d:
@@ -167,7 +167,10 @@ class Filter(object):
             leff = np.trapz(w * s.transmit * v.flux.magnitude, w, axis=-1)
             leff /= np.trapz(s.transmit * v.flux.magnitude, w, axis=-1)
         if self.wavelength_unit is not None:
-            return leff * unit[self.wavelength_unit]
+            #sunit = unit[self.wavelength_unit]
+            sunit = self.wavelength_unit
+            factor = (v.wavelength[0].to(other=sunit)/v.wavelength[0].magnitude).magnitude
+            return leff * factor * unit[sunit]
         else:
             return leff
 
@@ -412,7 +415,7 @@ class Filter(object):
     def AB_zero_Jy(self):
         """ AB flux zero point in Jansky (Jy) """
         c = unit['1e-8 * c'].to('m/s').magnitude
-        f = 1e5 / c * self.leff.magnitude ** 2 * self.AB_zero_flux.magnitude
+        f = 1e5 / c * self.leff.to(other='AA').magnitude ** 2 * self.AB_zero_flux.magnitude
         return f * unit['Jy']
 
     @property
@@ -437,7 +440,7 @@ class Filter(object):
     def Vega_zero_Jy(self):
         """ Vega flux zero point in Jansky (Jy) """
         c = unit['1e-8 * c'].to('m/s').magnitude
-        f = 1e5 / c * self.leff.magnitude ** 2 * self.Vega_zero_flux.magnitude
+        f = 1e5 / c * self.leff.to(other='AA').magnitude ** 2 * self.Vega_zero_flux.magnitude
         return f * unit['Jy']
 
     @property
