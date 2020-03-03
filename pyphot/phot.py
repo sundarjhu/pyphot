@@ -531,7 +531,7 @@ class Library(object):
         return HDF_Library(filename, **kwargs)
 
     @classmethod
-    def from_ascci(cls, filename, **kwargs):
+    def from_ascii(cls, filename, **kwargs):
         return Ascii_Library(filename, **kwargs)
 
     @property
